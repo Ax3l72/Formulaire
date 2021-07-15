@@ -3,12 +3,42 @@
 
 <head>
     <meta>
-    <title></title>
+    <title>Mon super site</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
+        <h1>Formulaire de mon super site</h1>
     </header>
+    <section>
+        <fieldset>
+            <legend>Formulaire d'inscription</legend>
+            <form action="" method="get">
+                <div>
+                    <label for="name">Votre Pseudo :</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div>
+                    <label for="mdp">Votre Mot de passe :</label>
+                    <input type="text" name="mdp" id="mdp" required>
+                </div>
+                <div>
+                    <label for="mdp2">Confirmation de votre Mot de passe :</label>
+                    <input type="text" name="mdp2" id="mdp2" required>
+                </div>
+                <div>
+                    <label for="email">Votre Email :</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+            </form>
+            <fieldset>
+                <legend>Choisisez votre genre</legend>
+                <label><input type="radio" name="radio">Homme</label>
+                <label><input type="radio" name="radio">Femme</label>
+            </fieldset>
+        </fieldset>
+    </section>
 </body>
 
 </html>
