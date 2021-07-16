@@ -2,17 +2,17 @@ var form_inscription = document.getElementById("inscription");
 
 function passwordChanged() {
     var strength = document.getElementById('strength');
-    var strongRegex = new RegExp("^(?=.{20,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-    var goodRegex = new RegExp("^(?=.{15,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-    var mediumRegex = new RegExp("^(?=.{12,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+    var strongRegex = new RegExp("^(?=.{20,50})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var goodRegex = new RegExp("^(?=.{15,19})(((?=.*[A-Z])(?=.*[a-z]))|((?=.^[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{12,15})(((?=.*[A-Z])(?=.^[a-z]))|((?=.*[A-Z])(?=.^[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var enoughRegex = new RegExp("(?=.{8,12}).*", "g");
     var pwd = document.getElementById("password");
     if (pwd.value.length == 0) {
         strength.innerHTML = '';
     } else if (false == enoughRegex.test(pwd.value)) {
         strength.innerHTML = '';
     } else if (strongRegex.test(pwd.value)) {
-        strength.innerHTML = '<span style="color:springgreen">Fort !</span>';
+        strength.innerHTML = '<span style="color:forestgreen">Fort !</span>';
     } else if (goodRegex.test(pwd.value)) {
         strength.innerHTML = '<span style="color:seagreen">Bon !</span>';
     } else if (mediumRegex.test(pwd.value)) {
@@ -22,6 +22,19 @@ function passwordChanged() {
     }
 }
 
+function radiotest() {
+    var isChecked = false;
+    for (i = 0; i < document.getElementsByTagName("input").length; i++)
+        if (document.getElementsByTagName("input")[i].name == "genre")
+            if (document.getElementsByTagName("input")[i].checked)
+                isChecked = true;
+    console.log("sqsdsdf")
+    if (!isChecked) {
+        console.log("sqsdf")
+        return false;
+
+    }
+}
 
 function valider(event) {
     var champ_nom = form_inscription.elements["nom"];
@@ -40,6 +53,9 @@ function valider(event) {
     if (champ_mdp.value == "") {
         form_OK = false;
         champ_mdp.classList.add("erreur");
+    } else if (champ_mdp.length <= 7) {
+        form_OK = false;
+        champ_mdp.classList.add("erreur");
     } else {
         champ_mdp.classList.remove("erreur");
     }
@@ -50,12 +66,25 @@ function valider(event) {
     } else {
         champ_confirmation.classList.remove("erreur");
     }
-
     //
-    if (champ_confirmation != champ_mdp) {
+    if (champ_confirmation.value !== champ_mdp.value) {
         form_OK = false;
         champ_mdp.classList.add("erreur");
         champ_confirmation.classList.add("erreur");
+
+        var mdpverif = document.getElementById('mdpverif');
+        mdpverif.innerHTML = '<span class="mdpverif" style="color:red">Les mot de passe ne corespondent pas !</span>';
+
+
+    } else if (champ_mdp.length && champ_confirmation.length <= 8) {
+        champ_mdp.classList.remove("erreur");
+        champ_confirmation.classList.remove("erreur");
+
+        const container = document.getElementById("verif")
+        const childOne = document.getElementById("mdpverif")
+
+        container.removeChild(childOne)
+
     }
 
     var regex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]&shy;{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
@@ -70,4 +99,6 @@ function valider(event) {
         event.preventDefault();
     }
 }
+
+
 form_inscription.addEventListener('submit', valider);

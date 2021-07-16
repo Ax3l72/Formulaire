@@ -14,20 +14,20 @@
     <section>
         <fieldset class="forms">
             <legend>Formulaire d'inscription</legend>
-            <form action="#" method="get" id="inscription">
+            <form action="#" method="get" id="inscription" class="forms-int">
                 <div>
-                    <label for="nom">Votre Pseudo :</label>
+                    <label for="nom">Votre Nom :</label>
                     <input size="50" type="text" name="nom">
                 </div>
                 <div>
                     <label for="mdp">Votre Mot de passe :</label>
-                    <input name="password" id="password" type="text" size="50" maxlength="50" onkeyup="return passwordChanged();" /><br>
+                    <input name="password" id="password" type="text" size="50" maxlength="50" onkeyup="return passwordChanged();" /></span><br>
                     <span id="strength"></span>
                     <p></p>
                 </div>
-                <div>
+                <div class="verif">
                     <label for="confirmation">Confirmation de votre Mot de passe :</label>
-                    <input size="50" type="text" name="confirmation">
+                    <input size="50" type="text" name="confirmation"><span id="mdpverif"></span>
                 </div>
                 <div>
                     <label for="email">Votre Email :</label>
@@ -37,15 +37,15 @@
                 <fieldset>
                     <legend>Choisisez votre genre</legend>
 
-                    <input type="radio" name="radio">
-                    <label>Femme</label><br/>
 
-                    <input type="radio" name="radio">
-                    <label>Homme</label><br/>
+                    <label><input type="radio" name="genre" required>Femme</label><br/>
+
+
+                    <label><input type="radio" name="genre" required>Homme</label>
 
 
                 </fieldset>
-                <input type="submit" name="valider" value="Valider">
+                <input class="button" type="submit" name="valider" value="Valider" onsubmit="return radiotest();">
 
             </form>
 
