@@ -7,8 +7,10 @@ function passwordChanged() {
     var mediumRegex = new RegExp("^(?=.{12,15})(((?=.*[A-Z])(?=.^[a-z]))|((?=.*[A-Z])(?=.^[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
     var enoughRegex = new RegExp("(?=.{8,12}).*", "g");
     var pwd = document.getElementById("password");
-    if (pwd.value.length == 0) {
-        strength.innerHTML = '';
+    if (pwd.value.length = 1 && pwd.value.length <= 7) {
+        strength.innerHTML = '<span style="color:darkred">Très faible !</span>';
+    } else if (pwd.value.length = 0) {
+        strength.innerHTML = ''
     } else if (false == enoughRegex.test(pwd.value)) {
         strength.innerHTML = '';
     } else if (strongRegex.test(pwd.value)) {
@@ -22,18 +24,9 @@ function passwordChanged() {
     }
 }
 
-function radiotest() {
-    var isChecked = false;
-    for (i = 0; i < document.getElementsByTagName("input").length; i++)
-        if (document.getElementsByTagName("input")[i].name == "genre")
-            if (document.getElementsByTagName("input")[i].checked)
-                isChecked = true;
-    console.log("sqsdsdf")
-    if (!isChecked) {
-        console.log("sqsdf")
-        return false;
-
-    }
+function KeyPress() {
+    total = document.getElementById("nom").value.length + 1;
+    document.getElementById("compteur").innerHTML = total + " /20";
 }
 
 function valider(event) {
@@ -53,13 +46,15 @@ function valider(event) {
     if (champ_mdp.value == "") {
         form_OK = false;
         champ_mdp.classList.add("erreur");
-    } else if (champ_mdp.length <= 7) {
-        form_OK = false;
-        champ_mdp.classList.add("erreur");
     } else {
         champ_mdp.classList.remove("erreur");
     }
     //
+    if (!champ_mdp.length > 7) {
+        form_OK = false;
+        champ_mdp.classList.add("erreur");
+    }
+
     if (champ_confirmation.value == "") {
         form_OK = false;
         champ_confirmation.classList.add("erreur");
@@ -67,7 +62,9 @@ function valider(event) {
         champ_confirmation.classList.remove("erreur");
     }
     //
+
     if (champ_confirmation.value !== champ_mdp.value) {
+        console.log(champ_confirmation.value + " -- " + champ_mdp.value)
         form_OK = false;
         champ_mdp.classList.add("erreur");
         champ_confirmation.classList.add("erreur");
@@ -76,7 +73,12 @@ function valider(event) {
         mdpverif.innerHTML = '<span class="mdpverif" style="color:red">Les mot de passe ne corespondent pas !</span>';
 
 
-    } else if (champ_mdp.length && champ_confirmation.length <= 8) {
+    } else if (champ_confirmation.value && champ_mdp == null) {
+        form_OK = false;
+        champ_mdp.classList.add("erreur");
+        champ_confirmation.classList.add("erreur");
+
+    } else if (champ_confirmation.value == champ_mdp.value && champ_mdp.length >= 8) {
         champ_mdp.classList.remove("erreur");
         champ_confirmation.classList.remove("erreur");
 

@@ -17,17 +17,19 @@
             <form action="#" method="get" id="inscription" class="forms-int">
                 <div>
                     <label for="nom">Votre Nom :</label>
-                    <input size="50" type="text" name="nom">
+                    <input maxlength="19" size="50" type="text" id="nom" name="nom" onkeydown="KeyPress();" class="inscription_input"><span id="compteur"></span>
                 </div>
                 <div>
                     <label for="mdp">Votre Mot de passe :</label>
-                    <input name="password" id="password" type="text" size="50" maxlength="50" onkeyup="return passwordChanged();" /></span><br>
+                    <input minlength="8" maxlength="50" name="password" id="password" type="password" size="50" maxlength="50" onkeyup="return passwordChanged();" /></span>
+
+                    <br>
                     <span id="strength"></span>
                     <p></p>
                 </div>
                 <div class="verif">
                     <label for="confirmation">Confirmation de votre Mot de passe :</label>
-                    <input size="50" type="text" name="confirmation"><span id="mdpverif"></span>
+                    <input minlength="8" maxlength="50" size="50" type="password" name="confirmation"><span id="mdpverif"></span>
                 </div>
                 <div>
                     <label for="email">Votre Email :</label>
