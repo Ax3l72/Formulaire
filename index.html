@@ -12,33 +12,50 @@
         <h1>Formulaire de mon super site</h1>
     </header>
     <section>
-        <fieldset>
+        <fieldset class="forms">
             <legend>Formulaire d'inscription</legend>
-            <form action="" method="get">
+            <form action="#" method="get" id="inscription">
                 <div>
-                    <label for="name">Votre Pseudo :</label>
-                    <input minlength="4" maxlength="10" size="50" type="text" name="name" id="name" required>
+                    <label for="nom">Votre Pseudo :</label>
+                    <input size="50" type="text" name="nom">
                 </div>
                 <div>
                     <label for="mdp">Votre Mot de passe :</label>
-                    <input minlength="0" maxlength="50" size="50" type="text" name="mdp" id="mdp" required>
+                    <input name="password" id="password" type="text" size="50" maxlength="50" onkeyup="return passwordChanged();" /><br>
+                    <span id="strength"></span>
+                    <p></p>
                 </div>
                 <div>
-                    <label for="mdp2">Confirmation de votre Mot de passe :</label>
-                    <input minlength="0" maxlength="50" size="50" type="text" name="mdp2" id="mdp2" required>
+                    <label for="confirmation">Confirmation de votre Mot de passe :</label>
+                    <input size="50" type="text" name="confirmation">
                 </div>
                 <div>
                     <label for="email">Votre Email :</label>
-                    <input minlength="0" maxlength="50" size="50" type="email" name="email" id="email" required>
+                    <input minlength="0" maxlength="50" size="50" type="email" name="email">
                 </div>
+
+                <fieldset>
+                    <legend>Choisisez votre genre</legend>
+
+                    <input type="radio" name="radio">
+                    <label>Femme</label><br/>
+
+                    <input type="radio" name="radio">
+                    <label>Homme</label><br/>
+
+
+                </fieldset>
+                <input type="submit" name="valider" value="Valider">
+
             </form>
-            <fieldset>
-                <legend>Choisisez votre genre</legend>
-                <label><input type="radio" name="radio">Homme</label>
-                <label><input type="radio" name="radio">Femme</label>
-            </fieldset>
+
         </fieldset>
+
+
+
+
     </section>
+    <script src="form.js"></script>
 </body>
 
 </html>
