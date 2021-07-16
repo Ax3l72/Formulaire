@@ -1,10 +1,21 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 header {
-    background: center;
-    background-size: cover;
-    position: relative;
-    background-color: rgb(33, 150, 165);
-    padding: 20px;
-    margin: 15px;
+    background-color: yellowgreen;
+    height: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+
+header h1 {
+    padding: 25px;
+    margin: 0px;
+    text-align: center;
 }
 
 form.form-example {
@@ -23,4 +34,13 @@ input {
 
 label {
     padding-right: 10px;
+}
+
+.erreur {
+    border: solid red;
+}
+
+.forms {
+    padding: 0px;
+    margin: 50px;
 }
