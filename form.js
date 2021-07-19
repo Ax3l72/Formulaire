@@ -10,16 +10,16 @@ function passwordChanged() {
 
     var nbr = pwd.value.length
     switch (true) {
-        case (nbr >= 22 && nbr <= 50):
+        case (strongRegex.test(pwd.value)):
             strength.innerHTML = '<span style="color:forestgreen">Fort !</span>';
             break;
-        case (nbr >= 16 && nbr <= 21):
+        case (goodRegex.test(pwd.value)):
             strength.innerHTML = '<span style="color:seagreen">Bon !</span>';
             break;
-        case (nbr >= 13 && nbr <= 15):
+        case (mediumRegex.test(pwd.value)):
             strength.innerHTML = '<span style="color:orange">Moyen !</span>';
             break;
-        case (nbr >= 8 && nbr <= 12):
+        case (enoughRegex.test(pwd.value)):
             strength.innerHTML = '<span style="color:red">Faible !</span>';
             break;
         case (nbr >= 0 && nbr <= 7):
