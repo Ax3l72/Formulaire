@@ -11,10 +11,12 @@
     <header>
         <h1>Formulaire de mon super site</h1>
     </header>
-    <section>
-        <fieldset class="forms">
+    <section class="container">
+        <fieldset>
+            <!-- class="forms" -->
             <legend>Formulaire d'inscription</legend>
-            <form action="#" method="get" id="inscription" class="forms-int">
+            <form action="#" method="get" id="inscription">
+                <!-- class="forms-int" -->
                 <div>
                     <label for="nom">Votre Nom :</label>
                     <input maxlength="20" size="50" type="text" id="nom" name="nom" onkeyup="KeyPress();" class="inscription_input"><span id="compteur"></span>
@@ -36,8 +38,8 @@
                 <fieldset class="genre">
                     <legend>Choisisez votre genre</legend>
 
-                    <label><input type="radio" name="genre" required>Femme</label><br/>
-                    <label><input type="radio" name="genre" required>Homme</label>
+                    <label><input type="radio" name="genre" required="">Femme</label>
+                    <label><input type="radio" name="genre" required="">Homme</label>
 
                 </fieldset>
                 <input class="button" type="submit" name="valider" value="Valider" onsubmit="return valider();">
