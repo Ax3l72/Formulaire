@@ -2,31 +2,39 @@ var form_inscription = document.getElementById("inscription");
 
 function passwordChanged() {
     var strength = document.getElementById('strength');
-    var strongRegex = new RegExp("^(?=.{20,50})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    var goodRegex = new RegExp("^(?=.{15,19})(((?=.*[A-Z])(?=.*[a-z]))|((?=.^[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    var mediumRegex = new RegExp("^(?=.{12,15})(((?=.*[A-Z])(?=.^[a-z]))|((?=.*[A-Z])(?=.^[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
-    var enoughRegex = new RegExp("(?=.{8,12}).*", "g");
+    var strongRegex = new RegExp("^(?=.{22,50})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var goodRegex = new RegExp("^(?=.{16,21})(((?=.*[A-Z])(?=.*[a-z]))|((?=.^[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var mediumRegex = new RegExp("^(?=.{13,15})(((?=.*[A-Z])(?=.^[a-z]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    var enoughRegex = new RegExp("(?=.{8,12}).*$", "g");
     var pwd = document.getElementById("password");
-    if (pwd.value.length = 1 && pwd.value.length <= 7) {
-        strength.innerHTML = '<span style="color:darkred">Très faible !</span>';
-    } else if (pwd.value.length = 0) {
-        strength.innerHTML = ''
-    } else if (false == enoughRegex.test(pwd.value)) {
-        strength.innerHTML = '';
-    } else if (strongRegex.test(pwd.value)) {
-        strength.innerHTML = '<span style="color:forestgreen">Fort !</span>';
-    } else if (goodRegex.test(pwd.value)) {
-        strength.innerHTML = '<span style="color:seagreen">Bon !</span>';
-    } else if (mediumRegex.test(pwd.value)) {
-        strength.innerHTML = '<span style="color:orange">Moyen !</span>';
-    } else {
-        strength.innerHTML = '<span style="color:red">Faible !</span>';
+
+    var nbr = pwd.value.length
+    switch (true) {
+        case (nbr >= 22 && nbr <= 50):
+            strength.innerHTML = '<span style="color:forestgreen">Fort !</span>';
+            break;
+        case (nbr >= 16 && nbr <= 21):
+            strength.innerHTML = '<span style="color:seagreen">Bon !</span>';
+            break;
+        case (nbr >= 13 && nbr <= 15):
+            strength.innerHTML = '<span style="color:orange">Moyen !</span>';
+            break;
+        case (nbr >= 8 && nbr <= 12):
+            strength.innerHTML = '<span style="color:red">Faible !</span>';
+            break;
+        case (nbr >= 0 && nbr <= 7):
+            strength.innerHTML = '<span style="color:darkred">Très faible !</span>';
+            break;
+        default:
+            strength.innerHTML = ''
     }
 }
 
+
 function KeyPress() {
-    total = document.getElementById("nom").value.length + 1;
-    document.getElementById("compteur").innerHTML = total + " /20";
+    total = document.getElementById("nom").value.length++
+        document.getElementById("compteur").innerHTML = total + " /20";
+
 }
 
 function valider(event) {
@@ -36,7 +44,7 @@ function valider(event) {
     var champ_email = form_inscription.elements["email"];
     var form_OK = true;
 
-    if (champ_nom.value == "") {
+    if (!champ_nom.value) {
         form_OK = false;
         champ_nom.classList.add("erreur");
     } else {
@@ -101,6 +109,4 @@ function valider(event) {
         event.preventDefault();
     }
 }
-
-
 form_inscription.addEventListener('submit', valider);

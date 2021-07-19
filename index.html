@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta>
+    <meta charset="utf-8">
     <title>Mon super site</title>
     <link href="style.css" rel="stylesheet">
 </head>
@@ -17,37 +17,30 @@
             <form action="#" method="get" id="inscription" class="forms-int">
                 <div>
                     <label for="nom">Votre Nom :</label>
-                    <input maxlength="19" size="50" type="text" id="nom" name="nom" onkeydown="KeyPress();" class="inscription_input"><span id="compteur"></span>
+                    <input maxlength="20" size="50" type="text" id="nom" name="nom" onkeyup="KeyPress();" class="inscription_input"><span id="compteur"></span>
                 </div>
                 <div>
-                    <label for="mdp">Votre Mot de passe :</label>
-                    <input minlength="8" maxlength="50" name="password" id="password" type="password" size="50" maxlength="50" onkeyup="return passwordChanged();" /></span>
-
-                    <br>
+                    <label for="password">Votre Mot de passe :</label>
+                    <input minlength="8" maxlength="50" name="password" id="password" type="password" size="50" maxlength="50" onkeyup="passwordChanged();" />
                     <span id="strength"></span>
-                    <p></p>
                 </div>
                 <div class="verif">
                     <label for="confirmation">Confirmation de votre Mot de passe :</label>
-                    <input minlength="8" maxlength="50" size="50" type="password" name="confirmation"><span id="mdpverif"></span>
+                    <input minlength="8" maxlength="50" size="50" id="verif" type="password" name="confirmation"><span id="mdpverif"></span>
                 </div>
                 <div>
                     <label for="email">Votre Email :</label>
-                    <input minlength="0" maxlength="50" size="50" type="email" name="email">
+                    <input minlength="0" maxlength="50" size="50" id="email" type="email" name="email">
                 </div>
 
-                <fieldset>
+                <fieldset class="genre">
                     <legend>Choisisez votre genre</legend>
 
-
                     <label><input type="radio" name="genre" required>Femme</label><br/>
-
-
                     <label><input type="radio" name="genre" required>Homme</label>
 
-
                 </fieldset>
-                <input class="button" type="submit" name="valider" value="Valider" onsubmit="return radiotest();">
+                <input class="button" type="submit" name="valider" value="Valider" onsubmit="return valider();">
 
             </form>
 
