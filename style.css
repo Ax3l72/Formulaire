@@ -91,3 +91,8 @@
         background-color: rgba(111, 41, 97, .3);
         border: 2px solid rgba(111, 41, 97, .5);
     }
+    
+    legend {
+        font-size: 20px;
+        font-weight: bold;
+    }
